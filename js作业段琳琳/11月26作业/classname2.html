@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.div1{
+			height:100px;
+			width:100px;
+			background:blue;
+		}
+		.div2{
+			height:200px;
+			width:200px;
+			background:red;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var div=document.getElementsByClassName("div1")[0];
+			div.onclick=function(){
+				if(div.className=="div1"){
+					div.className="div2";
+				}else{
+					div.className="div1";
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+  <div class="div1"></div>
+</body>
+</html>

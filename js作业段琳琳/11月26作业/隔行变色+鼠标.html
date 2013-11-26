@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		li{
+			height:40px;width:300px;
+			background:#66ffff;
+			margin-bottom:4px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var ul1=document.getElementById("ul1");
+			var li=document.getElementsByTagName("li");
+			for(var i=0;i<li.length;i++){
+				li[i].style.background=i%2==0?"red":"#66ffff";
+				li[i].index=i;
+				li[i].onmouseover=function(){
+					for( var i=0;i<li.length;i++){
+						li[i].style.background=i%2==0?"red":"#66ffff";	
+					}
+					li[this.index].style.background="yellow";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<ul id="ul1">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>

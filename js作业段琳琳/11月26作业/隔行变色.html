@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		li{
+			height:30px;
+			width:200px;
+			background:red;
+			margin-bottom:4px;
+			list-style:none;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var ul1=document.getElementById("ul1");
+			var li=ul1.getElementsByTagName("li");
+			//  方法1
+			/*for( var i=0;i<li.length;i+=2){
+				li[i].style.background="blue";
+			}*/
+			//   方法2
+			for( var i=0;i<li.length;i++){
+				li[i].style.background=i%2==0?"blue":"red";
+			};
+		}
+	</script>
+</head>
+<body>
+  <ul id="ul1">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+  </ul>
+
+</body>
+</html>

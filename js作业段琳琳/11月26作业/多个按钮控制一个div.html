@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		div{
+			height:100px;
+			width:100px;
+			background:#ff0066;
+			border:1px solid blue;
+			position:absolute;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var inp=document.getElementsByTagName("input");
+			var div=document.getElementsByTagName("div");
+			inp[0].onclick=function(){
+				div[0].style.height="200px";
+				div[0].style.width="200px";
+			};
+			inp[1].onclick=function(){
+				div[0].style.background="#ffcc00";
+			};
+			inp[2].onclick=function(){
+				div[0].style.margin="20px";
+			};
+			inp[3].onclick=function(){
+				div[0].style.left="40%";
+				div[0].style.top="40%";
+			};
+			inp[4].onclick=function(){
+				div[0].style.padding="100px";
+			}
+		}
+	</script>
+</head> 
+<body>
+<input type="button" value="改变宽高" />
+<input type="button" value="改变背景色" />
+<input type="button" value="改变margin" />
+<input type="button" value="改变left、top值" />
+<input type="button" value="改变padding" />
+<div></div>
+</body>
+</html>

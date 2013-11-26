@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.test{
+			height:100px;
+			width:100px;
+			background:red;
+		}
+		.test1{
+			height:200px;
+			width:200px;
+			background:blue;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var btn=document.getElementById("btn");
+			var div=document.getElementById("test");
+			
+			btn.onclick=function(){
+				if(div.className=="test"){
+					div.className="test1";
+				}else{
+					div.className="test";
+				}
+				alert(div.className)
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="点我改变"/>
+  <div class="test" id="test"></div>
+</body>
+</html>

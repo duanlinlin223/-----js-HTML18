@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{
+			height:100px;
+			width:100px;
+			background:red;
+			color:white;
+			font-weight:bold;
+			font-size:16px;
+			margin-right:4px;
+			overflow:hidden;
+			float:left;
+		}
+		input{
+			height:30px;
+			width:100px;
+			float:left;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var inp=document.getElementsByTagName("input");
+			var div=document.getElementsByTagName("div");
+			inp[0].onclick=function(){
+				div[0].style.width="200px";
+				div[1].style.height="300px";
+				div[2].style.background="#cc33ff";
+				div[3].style.color="#33cc00";
+				div[4].style.margin="100px";
+			}
+		}
+	</script>
+</head>
+<body>
+  <input type="button" value="改变所有" /></br></br>
+  <div>改变宽</div>
+  <div>改变高</div>
+  <div>改变背景色</div>
+  <div>改变字体颜色</div>
+  <div>改变margin值</div>
+</body>
+</html>
