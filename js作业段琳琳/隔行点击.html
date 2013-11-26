@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#ul1{
+			width:300px;
+			margin:0 auto;
+		}
+		li{
+			height:40px;
+			width:200px;
+			line-height:40px;
+			color:white;
+			font-weight:bold;
+			background:#339900;
+			margin:4px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var ul1=document.getElementById("ul1");
+			var li=ul1.getElementsByTagName("li");
+			for( var i=0;i<li.length;i++){
+				li[i].index=i;
+				if(i%2==0){
+					li[i].onclick=function(){
+						alert("我是奇数行 单击")
+					}
+				}else{
+					li[i].ondblclick=function(){
+						alert("我是偶数行 双击")
+					};
+				};
+			};
+		};
+		var a="1";
+		var b=1;
+		alert(b-a)
+	</script>
+</head>
+<body>
+  <ul id="ul1">
+	<li>我是奇数行</li>
+	<li>我是偶数行</li>
+	<li>我是奇数行</li>
+	<li>我是偶数行</li>
+	<li>我是奇数行</li>
+	<li>我是偶数行</li>
+	<li>我是奇数行</li>
+	<li>我是偶数行</li>
+	<li>我是奇数行</li>
+	<li>我是偶数行</li>
+  </ul>
+</body>
+</html>

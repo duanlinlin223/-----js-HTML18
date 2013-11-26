@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{
+			font-size:100px;
+			height:200px;
+			width:200px;
+			background:#ff0099;
+			border:3px dotted #ffff00;
+			line-height:200px;
+			text-align:center;
+			color:white;
+			display:none;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var div=document.getElementsByTagName("div");
+			var inp=document.getElementsByTagName("input");
+			for(var i=0;i<inp.length;i++){
+				inp[i].index=i;
+				inp[i].onclick=function(){
+					for(var i=0;i<inp.length;i++){
+						div[i].style.display="none";
+					};
+					div[this.index].style.display="block";
+				}
+			}
+		}
+		var a="1";
+			b=1;
+		alert(a+b);
+	</script>
+</head>
+<body>
+<div style="display:block;">1</div> 
+<div>2</div> 
+<div>3</div> 
+<div>4</div> 
+<div>5</div> 
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<input type="button" value="按钮4"/>
+<input type="button" value="按钮5"/>
+</body>
+</html>

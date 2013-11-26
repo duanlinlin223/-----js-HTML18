@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<script>
+		/*var a = 2;
+		var b = 3;
+		if( a>b){
+			a=10;
+		}else{
+			a=-1;
+		}
+		alert(a);*/
+		/*var ind=0;
+		for( var i=0;i<=90;i++){
+			ind=ind*i;
+		}
+		alert(i);*/
+		// x-y的加法
+		/*var ind = 0;
+		function add(x, y){
+			for(var i = x; i <= y; i++){
+				ind = ind + i;
+			};
+		};
+		var a = add(1, 100);
+		alert( ind);*/
+
+		// 1--5的乘积;
+		/*var ind = 1;
+		function pro(a, b){
+			for( var i = a;i <= b;i++ ){
+				ind = ind*i;
+			};
+		};
+		pro(1, 5)
+		alert(ind);*/
+
+		// 判断c的true 和false
+		/*var a = 2;
+		var b = 3;
+		c = (a = 5) && (a < b);
+		alert(a);
+		alert(c);*/
+
+		//1--100的和 加if判断;
+		/*var ind=0;
+		function move(x, y){
+			if(x > y){
+				for( var i = y; i <= x;i--){
+					ind = ind + i;
+				};
+			}else{
+				for( var i = x; i <= y;i++){
+					ind = ind + i;
+				};
+			};
+		}
+		move(1, 100)
+		alert(ind);*/
+		
+		// 1--100的和2
+		/*var ind=0;
+		for( var i = 100;i >= 0; i--){
+			ind = ind + i;  
+		}
+		alert(ind);
+		// 全局变量和局部变量
+		/*var test=10;
+		function out(){
+			var test=20;
+			function inner(){
+				var test=30;
+				alert(test)
+			}
+			inner();
+			alert(test)
+		}
+		out();
+		alert(test)*/
+
+		// 网易面试题
+		/*var tt = "aa";
+		function test(){
+			alert(tt);
+			var tt = "dd";
+			alert(tt);
+		}
+		test();*/
+		
+		/*var a=3;
+		function pro(){
+			var a=5;
+			function pp(){
+				var a=10;
+			};
+			pp();
+			alert(a);
+		}
+		pro();
+		 alert(a);*/
+		 var s=10;
+		 function move(){
+			var s=0;
+			function move1(){
+				var s=100;
+				alert(s);
+			}
+			alert(s);
+			move1();
+		 }
+		 move();
+		 alert(s)
+	</script>
+</head>
+<body>
+  
+</body>
+</html>
