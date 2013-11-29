@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.tab-nav{
+			height:40px;
+			width:300px;
+			border:1px solid red;
+		}
+		.tab-nav span{
+			width:20%;
+			line-height:40px;
+			float:left;
+			text-align:center;
+			cursor:pointer;
+		}
+		.tab-con{
+			height:300px;
+			width:300px;
+			border:1px solid red;
+		}
+		.tab-con div{
+			height:300px;
+			width:300px;
+			display:none;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var navs=document.getElementById("tab-nav").getElementsByTagName("span");
+			var cons=document.getElementById("tab-con").getElementsByTagName("div");
+			/*navs[0].onclick=hand;
+			navs[1].onclick=hand;
+			navs[2].onclick=hand;*/
+			for( var i=0; i<navs.length;i++){
+				navs[i].onclick=hand;  //这里的hand是指句柄
+			}
+			function hand(){  //   这里的hand值得是语句 hand()
+				for( var i=0;i<navs.length;i++){
+					if( this===navs[i]){
+						cons[i].style.display="block";
+					}else{
+						cons[i].style.display="none";
+					}
+				}
+			}
+
+			
+		}
+	</script>
+</head>
+<body>
+  <div id="tab-nav" class="tab-nav">
+	<span>1</span>
+	<span>2</span>
+	<span>3</span>
+	<span>4</span>
+	<span>5</span>
+  </div>
+  <div id="tab-con" class="tab-con">
+	<div style="display:block;">内容1内容1内容1内容1内容1内容1</div>
+	<div>内容2内容2内容2内容2内容2内容2</div>
+	<div>内容3内容3内容3内容3内容3内容3</div>
+	<div>内容4内容4内容4内容4内容4内容4</div>
+	<div>内容5内容5内容5内容5内容5内容5</div>
+  </div>
+</body>
+</html>

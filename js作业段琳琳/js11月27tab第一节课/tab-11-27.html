@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		img{
+			height:150px;cursor:pointer;
+		}
+		ul{
+			height:100px;
+			width:400px;
+			background:#00ffff;
+			display:none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			/*var nav1 = document.getElementById("nav1");
+			var nav2 = document.getElementById("nav2");
+			var nav3 = document.getElementById("nav3");
+			var ul1 = document.getElementById("ul1");
+			var ul2 = document.getElementById("ul2");
+			var ul3 = document.getElementById("ul3");
+			nav1.onmouseover = function(){
+				ul1.style.display="block";	
+				ul2.style.display="none";
+				ul3.style.display="none";
+			}
+			nav2.onmouseover = function(){
+				ul1.style.display="none";	
+				ul2.style.display="block";
+				ul3.style.display="none";
+				ul2.style.background="#66cccc";
+			}
+			nav3.onmouseover = function(){
+				ul1.style.display="none";	
+				ul2.style.display="none";
+				ul3.style.display="block";
+				ul3.style.background="#99ffff";
+			}*/
+			var img=document.getElementsByTagName("img");
+			var ul=document.getElementsByTagName("ul");
+			for( var i=0;i<img.length;i++){
+				/*img[i].index=i;
+				img[i].onmouseover=function(){
+					for( var i=0;i<img.length;i++){
+						ul[i].style.display="none";
+					};
+					ul[this.index].style.display="block";
+				}
+			}*/
+			
+				img[i].onmouseover=function(){
+					for( var i=0;i<img.length;i++){
+						if(this==img[i]){
+							ul[i].style.display="block";
+						}
+					else{
+							ul[i].style.display="none";
+					}	}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<img src="1.jpg" alt="1.jpg"/>
+	<img src="1.jpg" alt="1.jpg"/>
+	<img src="1.jpg" alt="1.jpg"/>
+	<ul style="display:block;">
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul>
+	<ul>
+		<li>2</li>
+		<li>2</li>
+		<li>2</li>
+	</ul>
+	<ul>
+		<li>3</li>
+		<li>3</li>
+		<li>3</li>
+	</ul>
+</body>
+</html>

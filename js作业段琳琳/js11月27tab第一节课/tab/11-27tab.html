@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.tab-nav{
+			height:6px;
+			width:168px;
+			position:absolute;
+			left:140px;
+			top:172px;
+			padding:5px 0;
+			z-index:4;
+		}
+		.tab-nav span{
+			width:40px;
+			height:5px;
+			margin-right:2px;
+			background:#999;
+			float:left;
+			cursor:pointer;
+		}
+		.tab-con{
+			height:180px;
+			width:473px;
+			position:relative;
+		}
+		.tab-con div{
+			height:180px;
+			width:400px;
+			display:none;
+		}
+		.tab-con div img{
+			height:180px;
+			width:473px;
+			cursor:pointer;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var navs=document.getElementById("tab-nav").getElementsByTagName("span");
+			var cons=document.getElementById("tab-con").getElementsByTagName("div");
+			/*navs[0].onclick=hand;
+			navs[1].onclick=hand;
+			navs[2].onclick=hand;*/
+			for( var i=0; i<navs.length;i++){
+				navs[i].onmouseover=hand;  //这里的hand是指句柄
+			}
+			function hand(){  //   这里的hand值得是语句 hand()
+				for( var i=0;i<navs.length;i++){
+					if( this===navs[i]){
+						cons[i].style.display="block";
+						navs[i].style.background="#009933";
+					}else{
+						cons[i].style.display="none";
+						navs[i].style.background="#999";
+					}
+				}
+			}
+
+			
+		}
+	</script>
+</head>
+<body>
+  <div id="tab-nav" class="tab-nav">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+  </div>
+  <div id="tab-con" class="tab-con">
+	<div style="display:block;"><img src="1.jpg" alt=""/></div>
+	<div><img src="2.jpg" alt=""/></div>
+	<div><img src="3.jpg" alt=""/></div>
+	<div><img src="4.jpg" alt=""/></div>
+  </div>
+</body>
+</html>

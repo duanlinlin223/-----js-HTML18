@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var ul1 = document.getElementById("ul1");
+			var li=ul1.getElementsByTagName("li");
+			/*function setStyle(ele,prop,val){
+				ele.style[prop] = val;
+			};
+			setstyle(ul1,"border","1px solid red")*/
+			ul1.style.cssText="height:400px;width:800px;float:left;border:1px solid red;list-style:none;"
+			for( var i=0;i<li.length;i++){
+				li[i].style.cssText="height:40px;margin-bottom:4px;width:800px;float:left;"
+				li[i].style.background=i%2==0?"#9999ff":"#9966ff";
+				li[i].onmouseover=function(){
+					for(var i=0;i<li.length;i++){
+						if(this==li[i]){
+							li[i].style.background="red";
+						}
+					}	
+				};
+				li[i].onmouseout=function(){
+					for(var i=0;i<li.length;i++){
+						li[i].style.background=i%2==0?"#9999ff":"#9966ff";
+					}
+				};
+			}
+			
+		}
+	</script>
+</head>
+<body>
+  <ul id="ul1">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+  </ul>
+</body>
+</html>

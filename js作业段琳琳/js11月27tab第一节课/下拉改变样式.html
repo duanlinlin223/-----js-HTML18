@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		#div1{
+			height:100px;
+			width:100px;
+			background:#ccc;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var s1=document.getElementById("s1");
+			var txt=document.getElementById("txt");
+			var btn=document.getElementById("btn");
+			var div1=document.getElementById("div1");
+			btn.onclick=function(){
+				switch(s1.value){
+					case "height":
+					div1.style.height=txt.value+"px";
+					break;
+					case "width":
+					div1.style.width=txt.value+"px";
+					break;
+					case "background":
+					div1.style.background=txt.value;
+					break;
+					case "color":
+					div1.style.color=txt.value;
+					break;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<select id="s1">
+	<option value="height">height</option>
+	<option value="width">width</option>
+	<option value="background">background</option>
+	<option value="color">color</option>
+</select>
+<input type="text" id="txt"/>
+<input type="button" id="btn" value="改变"/>
+<div id="div1">文字文字文字</div>
+</body>
+</html>

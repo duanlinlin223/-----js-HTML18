@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul li{
+			float:left;
+			width:100px;
+			height:30px;
+			line-height:30px;
+			text-align:center;
+			background:#ffcccc;
+			border:1px solid red;
+			border-bottom:none;
+			cursor:pointer;
+		}
+		ul li.select{
+			background:#ff9999;
+			color:#cc0099;
+		}
+		ul{
+			overflow:hidden;
+			*zoom:1;
+			list-style:none;
+		}
+		#con{
+			width:306px;
+			height:200px;
+		}
+		#con div{
+			height:200px;
+			width:304px;
+			display:none;
+			border:1px red solid;
+			border-top:none;
+		}
+		#con div.show{
+			display:block;
+			color:white;
+			font-weight:bold;
+			background:#ff9999;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var nav=document.getElementById("nav");
+			var li=nav.getElementsByTagName("li");
+			var con=document.getElementById("con");
+			var div=con.getElementsByTagName("div");
+			for( var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[i].onclick=function(){
+					for(var i=0;i<li.length;i++){
+						li[i].className=" ";
+						div[i].className=" ";
+					};
+					li[this.index].className="select";
+					div[this.index].className="show";
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+<ul id="nav">
+	<li class="select">标题1</li>
+	<li>标题2</li>
+	<li>标题3</li>
+</ul>
+<div id="con">
+	<div class="show">内容1内容1内容1</div>
+	<div>内容2内容2内容2</div>
+	<div>内容3内容3内容3</div>
+</div>
+</body>
+</html>
