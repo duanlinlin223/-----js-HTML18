@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			background:#f5f7fa;
+		}
+		.banner{
+			width:1190px;
+			margin:2px auto 0;
+		}
+		.tab1-nav{
+			height:45px;
+			line-height:45px;
+			margin:90px auto 0;
+			width:1190px;
+			background:#ff6f3d;
+			border-radius:4px;
+		}
+		.tab1-nav li{
+			float:left;
+			color:white;
+			font-family:微软雅黑;
+			padding:0 6px;
+			margin-right:5px;
+			list-style:none;
+			cursor:pointer;
+		}
+		#tab1-nav .navs{
+			background-color:#ed5f30;
+		}
+		#all{
+			width:228px;
+			border-radius:4px;
+		}
+		.list{
+			width:230px;
+			height:450px;
+			background:#fffbea;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var tab1Nav=document.getElementById("tab1-nav");
+			var li=document.getElementsByTagName("li");
+			for(var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[i].onmouseover=function(){
+					for(var i=0;i<li.length;i++){
+						li[i].className=" ";
+					}	
+					li[this.index].className="navs";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+ <ul id="tab1-nav" class="tab1-nav">
+	<li id="all">全部商品分类</li>
+	<li class="navs">首页</li>
+	<li>小米手机</li>
+	<li>红米手机</li>
+	<li>小米电视</li>
+	<li>盒子</li>
+	<li>合约机</li>
+	<li>服务</li>
+	<li>MIUI</li>
+	<li>米聊</li>
+	<li>社区</li>
+ </ul>
+ <div class="banner">
+	<div class="list"></div>
+ </div>
+</body>
+</html>

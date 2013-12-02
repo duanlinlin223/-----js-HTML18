@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.out{
+		height:180px;
+		width:222px;
+		margin-bottom:16px;
+	}
+	.tab{
+		height:16px;
+	}
+	.tab li{
+		height:16px;
+		width:72px;
+		margin-right:2px;
+		float:left;
+		background:#666;
+		list-style:none;
+	}
+	.tab .nav{
+		background:#009966;
+	}
+	.con{
+		height:180px;
+		width:220px;
+	}
+	.con div{
+		height:180px;
+		width:220px;
+		font-size:20px;
+		font-family:微软雅黑;
+		display:none;
+	}
+	.con .cons{
+		display:block;
+		background:#99ccff;
+	}
+	</style>
+	<script>
+			function byClass(parent,oClass){
+				var El=parent.getElementsByTagName("*");
+				var arr=[];
+				for( var i=0;i<El.length;i++){
+					if(El[i].className==oClass){
+						arr.push(El[i]);
+					};
+				};
+				return arr;
+			}
+			function myFunction(index){
+				var tab=document.getElementById("tab");
+				var lis=tab.getElementsByTagName("li");
+				var con=document.getElementById("con");
+				var divs=con.getElementsByTagName("div");
+				for( var i=0;i<lis.length;i++){
+					lis[i].index=i;
+					lis[i].onmouseover=function(){
+						for( var i=0;i<lis.length;i++){
+							lis[i].className=" ";
+							divs[i].className=" ";
+						};
+						lis[this.index].className="nav";
+						divs[this.index].className="cons";
+					}
+			    }
+			};
+			
+			//myFunction("tab0","con0");
+			//myFunction("tab1","con1");
+		window.onload=function(){
+			var out=byClass(document,"out");
+			for(i=0;i<out.length;i++){
+				myFunction(i);
+			}
+			
+		}
+	</script>
+</head>
+<body>
+<div class="out">
+  <ul id="tab" class="tab">
+	<li class="nav"></li>
+	<li></li>
+	<li></li>
+  </ul>
+  <div id="con" class="con">
+	<div class="cons">内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+  </div>
+</div>
+
+ <div class="out">
+  <ul id="tab" class="tab">
+	<li class="nav"></li>
+	<li></li>
+	<li></li>
+  </ul>
+  <div id="con" class="con">
+	<div class="cons">内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

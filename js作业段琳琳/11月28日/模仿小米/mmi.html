@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			font-size:14px;
+			font-family:Arial,微软雅黑;
+			background:#f5f7fa;
+		}
+		a{
+			text-decoration:none;
+		}
+		img{
+			border:none;
+		}
+		clearfix{
+			overflow:hidden;
+			*zoom:1;
+			clear:both;
+		}
+		.hd{
+			width:1190px;
+			height:115px;
+			padding-top:30px;
+			margin:0 auto 2px;
+		}
+		.hd .logo{
+			float:left;
+		}
+		.hd .logo img{
+			height:60px;
+			width:143px;
+		}
+		.banner{
+			width:1190px;
+			margin:0 auto;
+			overflow:hidden;
+		}
+		.tab1-nav{
+			height:46px;
+			line-height:46px;
+			width:1190px;
+			float:left;
+			background:#ff6f3d;
+			border-radius:4px;
+		}
+		.tab1-nav li{
+			float:left;
+			height:46px;
+			padding:0 6px;
+			margin-right:5px;
+			list-style:none;
+		}
+		.tab1-nav li #phone{
+			position:relative;
+		}
+		
+		.tab1-nav li a{
+			color:white;
+			font-family:微软雅黑;
+			text-decoration:none;
+		}
+		.tab1-nav li a span{
+			position:absolute;
+			height:122px;
+			width:180px;
+			background:#fffbea;
+			display:none;
+		}
+		#tab1-nav .navs{
+			background-color:#ed5f30;
+		}
+		#all{
+			width:228px;
+			border-radius:4px;
+		}
+		.list{
+			width:230px;
+			height:612px;
+			margin-right:10px;
+			display:inline;
+			float:left;
+			background:#fffbea;
+		}
+		.slider{
+			width:950px;
+			height:450px;
+			margin-top:8px;
+			float:left;
+		}
+		#tab-nav{
+			height:40px;
+			width:950px;
+			background:#ff6f3d;
+		}
+		#tab-con{
+			width:950px;
+			height:410px;
+		}
+		#tab-nav li{
+			height:40px;
+			width:25%;
+			line-height:40px;
+			float:left;
+			color:white;
+			list-style:none;
+			text-align:center;
+			cursor:pointer;
+		}
+		#tab-con div{
+			height:410px;
+			width:950px;
+			font-size:14px;
+			line-height:22px;
+			background:#ff6f3d;
+			color:white;
+			display:none;
+			cursor:pointer;
+		}
+		.slider .nav-select{
+			font-weight:bold;
+			background:#ed5f30;
+		}
+		#tab-con .tab-select{
+			display:block;
+		}
+		.banner .list li{
+			height:40px;
+			line-height:40px;
+			font-size:14px;
+			list-style:none;
+			border-bottom:1px solid #f4edd9;
+			position:relative;
+		}
+		.banner .list li .more{
+			height:9px;
+			width:6px;
+			background:url(more.jpg) 0 0 no-repeat;
+			position:absolute;
+			right:15px;
+			top:17px;
+		}
+		.banner .list a{
+			color:#974c19;
+			margin-left:16px;
+			text-decoration:none;
+		}
+		.rabbit {
+			margin-left:-10px;
+			margin-top:10px;
+			float:left;
+			display:inline;
+		}
+		.rabbit img{
+			margin-left:10px;
+			float:left;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var tab1Nav=document.getElementById("tab1-nav");
+			var li=tab1Nav.getElementsByTagName("li");
+			var tabNav=document.getElementById("tab-nav");
+			var tabCon=document.getElementById("tab-con");
+			var lis=tabNav.getElementsByTagName("li");
+			var divs=tabCon.getElementsByTagName("div"); 
+			for(var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[i].onmouseover=function(){
+					for(var i=0;i<li.length;i++){
+						li[i].className=" ";
+					}	
+					li[this.index].className="navs";
+				}
+			};
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				lis[i].onmouseover=function(){
+					for(var i=0;i<lis.length;i++){
+						lis[i].className=" ";
+						divs[i].className=" ";
+					};
+					lis[this.index].className="nav-select";
+					divs[this.index].className="tab-select";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<div class="hd clearfix">
+	<div class="logo">
+		<h1><a href="###"><img src="logo.jpg" alt="xiaomi" title="小米"/></a></h1>	
+	</div>
+	<div class="user"></div>
+	<ul id="tab1-nav" class="tab1-nav">
+		<li id="all"><a href="###">全部商品分类</a></li>
+		<li class="navs"><a href="###">首页</a></li>
+		<li><a id="phone" href="###">小米手机<span>小米手机</span></a></li>
+		<li><a href="###">红米手机</a></li>
+		<li><a href="###">小米电视</a></li>
+		<li><a href="###">盒子</a></li>
+		<li><a href="###">合约机</a></li>
+		<li><a href="###">服务</a></li>
+		<li><a href="###">MIUI</a></li>
+		<li><a href="###">米聊</a></li>
+		<li><a href="###">社区</a></li>
+	</ul>
+</div>
+ <div class="banner clearfix">
+	<div class="list">
+		<ul>
+			<li><a href="###">购买手机</a></li>
+			<li><a href="###">小米电视与盒子</a><a class="more" href="###"></a></li>
+			<li><a href="###">后盖与个性化配件</a><a class="more" href="###"></a></li>
+			<li><a href="###">保护与贴膜</a><a class="more" href="###"></a></li>
+			<li><a href="###">移动电源电池</a><a class="more" href="###"></a></li>
+			<li><a href="###">耳机与音响</a><a class="more" href="###"></a></li>
+			<li><a href="###">小米生活方式</a><a class="more" href="###"></a></li>
+			<li><a href="###">存储与路由器</a><a class="more" href="###"></a></li>
+			<li><a href="###">移动电源电池</a><a class="more" href="###"></a></li>
+			<li><a href="###">耳机与音响</a><a class="more" href="###"></a></li>
+			<li><a href="###">移动电源电池</a><a class="more" href="###"></a></li>
+			<li><a href="###">特卖商品</a><a class="more" href="###"></a></li>
+			<li><a href="###">酷玩商品</a></li>
+		</ul>
+	</div>
+	<div class="slider">
+	  <ul id="tab-nav">
+		<li class="nav-select">红米</li>
+		<li>小米2A</li>
+		<li>小米3</li>
+		<li>小米2A</li>
+	  </ul>
+	  <div id="tab-con">
+		<div class="tab-select"><img src="1.jpg" alt="mi"/></div>
+		<div><img src="2.jpg" alt="mi"/></div>
+		<div><img src="3.jpg" alt="mi"/></div>
+		<div><img src="2.jpg" alt="mi"/></div>
+	  </div>
+	</div>
+	<div class="rabbit">
+		<a href="###"><img src="rabbit.jpg" alt="rabbit"/></a>
+		<a href="###"><img src="rabbit1.jpg" alt="rabbit"/></a>
+		<a href="###"><img src="rabbit.jpg" alt="rabbit"/></a>
+		<a href="###"><img src="rabbit1.jpg" alt="rabbit"/></a>
+	  </div>
+ </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;padding:0;
+		list-style:none;
+	}
+		.user{
+			float:right;
+			height:50px;
+			width:150px;
+			font-size:14px;
+			line-height:50px;
+			text-align:center;
+			color:white;
+			font-weight:bold;
+			background:#ffcc99;
+			position:relative;
+		}
+		.ul1{
+			height:254px;
+			width:150px;
+			position:absolute;
+			padding-top:3px;
+			right:0;
+			top:50px;
+			display:none;
+		}
+		.ul1 li{
+			height:20px;
+			border-bottom:1px dotted white;
+			background:#ffcccc;
+		}
+		input{
+			width:80px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var user=document.getElementById("user");
+			var ul1=document.getElementById("ul1");
+			var lis=document.getElementsByTagName("li");
+			user.onmouseover=function(){
+				ul1.style.display="block";
+			};
+			
+			user.onmouseout=function(){
+				ul1.style.display="none";
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmouseover=function(){
+					for( var i=0; i<lis.length; i++){
+						lis[i].style.background="#ffcccc";
+					};
+					this.style.background="#ffccff";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+ <div id="user" class="user">
+	<span>用户名:</span><input type="text"/>
+	<ul id="ul1" class="ul1">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div> 
+
+</body>
+</html>

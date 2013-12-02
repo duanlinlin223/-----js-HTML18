@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			height:40px;
+			width:950px;
+		}
+		#tab-con{
+			width:950px;
+			height:410px;
+		}
+		ul li{
+			height:40px;
+			width:25%;
+			background:#ff6f3d;
+			line-height:40px;
+			float:left;
+			font-size:16px;
+			color:white;
+			font-family:微软雅黑;
+			list-style:none;
+			text-align:center;
+			cursor:pointer;
+		}
+		#tab-con div{
+			height:410px;
+			width:950px;
+			font-size:14px;
+			line-height:22px;
+			background:#ff6f3d;
+			font-family:微软雅黑;
+			color:white;
+			display:none;
+		}
+		.nav-select{
+			font-weight:bold;
+			background:#ed5f30;
+		}
+		#tab-con .tab-select{
+			background:#ed5f30;
+			display:block;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var tabNav=document.getElementById("tab-nav");
+			var tabCon=document.getElementById("tab-con");
+			var lis=tabNav.getElementsByTagName("li");
+			var divs=tabCon.getElementsByTagName("div");
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				lis[i].onclick=function(){
+					for(var i=0;i<lis.length;i++){
+						lis[i].className=" ";
+						divs[i].className=" ";
+					};
+					lis[this.index].className="nav-select";
+					divs[this.index].className="tab-select";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+  <ul id="tab-nav">
+	<li class="nav-select">文学</li>
+	<li>史话</li>
+	<li>时评</li>
+	<li>独家</li>
+  </ul>
+  <div id="tab-con">
+	<div class="tab-select">文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学文学</div>
+	<div>史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话史话</div>
+	<div>时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评时评</div>
+	<div>独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家独家</div>
+  </div>
+</body>
+</html>

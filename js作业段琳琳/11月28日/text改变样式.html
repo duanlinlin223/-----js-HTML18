@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{
+			height:100px;
+			width:100px;
+			font-size:14px;
+			font-family:Arial;
+			background:#6633ff;
+			word-wrap:break-word;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var s1=document.getElementById("s1");
+			var txt=document.getElementById("txt");
+			var btn=document.getElementById("btn");
+			var div=document.getElementsByTagName("div")[0];
+			btn.onclick=function(){
+				div.style[s1.value]=txt.value;
+			}
+		}
+	</script>
+</head>
+<body>
+<select id="s1">
+	<option value="width">width</option>
+	<option value="height">height</option>
+	<option value="background">background</option>
+	<option value="color">color</option>
+</select>  
+<input type="text" id="txt" />
+<input type="button" id="btn" value="改变" />
+<div>12345671234567123456712345671234567123456712345671234567</div>
+</body>
+</html>

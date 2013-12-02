@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		#out{
+			height:150px;
+			width:936px;
+			border:1px solid red;
+			overflow:hidden;
+			position:relative;
+		}
+		#middle{
+			height:150px;
+			width:9999px;
+			position:absolute;
+		}
+		#inner,#inner2{
+			height:150px;
+			width:936px;
+			float:left;
+		}
+		#inner img,#inner2 img{
+			margin-right:4px;
+			float:left;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var out = document.getElementById("out");
+			var middle = document.getElementById("middle");
+			var inner = document.getElementById("inner");
+			var inner2 = document.getElementById("inner2");
+			var img = document.getElementsByTagName("img");
+			var oWidth = inner.offsetWidth;
+			var timer = null;
+			var ind = 0;
+			inner2.innerHTML = inner.innerHTML;
+			function move(){
+				ind--;
+				if(Math.abs(ind) > oWidth){
+					ind = 0;
+				};
+				if(Math.abs(ind)%img[0].offsetWidth == 0){
+					clearInterval(timer);
+					timer=setTimeout(function(){
+						timer = setInterval(move,10)
+					},1000)
+				}
+				middle.style.left = ind + "px";
+			}
+			timer = setInterval(move,10);	
+			out.onmouseover = function(){
+				clearInterval(timer);	
+			};
+			out.onmouseout = function(){
+				timer = setInterval(move,10)	
+			}
+		}
+	</script>
+</head>
+<body>
+ <div id="out">
+	<div id="middle">
+		<div id="inner">
+			<img src="rabbit.jpg" alt="rabbit" title="rabbit" />
+			<img src="rabbit1.jpg" alt="rabbit" title="rabbit" />
+			<img src="rabbit2.jpg" alt="rabbit" title="rabbit" />
+			<img src="rabbit3.jpg" alt="rabbit" title="rabbit" />
+		</div>
+		<div id="inner2"></div>
+	</div>
+ </div> 
+</body>
+</html>

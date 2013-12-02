@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.out{
+		height:180px;
+		width:220px;
+	}
+	.tab{
+		height:16px;
+	}
+	.tab li{
+		height:16px;
+		width:72px;
+		margin-right:2px;
+		float:left;
+		background:#666;
+		list-style:none;
+	}
+	.tab .nav{
+		background:#009966;
+	}
+	.con{
+		height:180px;
+		width:220px;
+	}
+	.con div{
+		height:180px;
+		width:220px;
+		font-size:20px;
+		font-family:微软雅黑;
+		display:none;
+	}
+	.con .cons{
+		display:block;
+		background:#99ccff;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			function myFunction(tabs,cons){
+				var tabs=document.getElementById(tabs).getElementsByTagName("li");
+				var cons=document.getElementById(cons).getElementsByTagName("div");
+				for( var i=0;i<tabs.length;i++){
+					tabs[i].index=i;
+					tabs[i].onmouseover=function(){
+						for( var i=0;i<tabs.length;i++){
+							tabs[i].className=" ";
+							cons[i].className=" ";
+						};
+						tabs[this.index].className="nav";
+						cons[this.index].className="cons";
+					}
+			    }
+			};
+			myFunction("tab0","con0");
+			myFunction("tab1","con1");
+		}
+	</script>
+</head>
+<body>
+
+  <ul id="tab0" class="tab">
+	<li class="nav"></li>
+	<li></li>
+	<li></li>
+  </ul>
+  <div id="con0" class="con">
+	<div class="cons">内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+  </div>
+
+  <ul id="tab1" class="tab">
+	<li class="nav"></li>
+	<li></li>
+	<li></li>
+  </ul>
+  <div id="con1" class="con">
+	<div class="cons">内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+
+</div>
+</body>
+</html>
