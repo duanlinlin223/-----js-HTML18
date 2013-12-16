@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.father{height:350px;width:350px;border:1px solid #cc00ff;position:relative;}
+		.father .move{height:175px;width:175px;background:#ffcc33;opacity:0.5;cursor:move;display:none;position:absolute;left:0;top:0;}
+		.son{height:400px;width:400px;border:1px solid #ddd;overflow:hidden;position:absolute;left:354px;top:0;display:none;}
+	</style>
+	<script>
+		window.onload = function(){
+			var fa = document.getElementById("father");
+			var son = document.getElementById("son");
+			var move = document.getElementById("move");
+			//var Img = document.getElementById("img");
+			/*function getStyle(Tag,prop){
+				var value;
+				if(prop in document.body.style){
+					if( window.getComputedStyle){
+						value =  document.defaultView.getComputedStyle(Tag,null)[prop];
+					}else{
+						value =  Tag.currentStyle[prop];
+					};	
+				}else{
+					value = Tag[prop];
+				};
+				
+				value = parseFloat(value);
+				if(isNaN(value)){
+					value = 0;
+				};
+				return value;
+			};*/
+			fa.onmouseover = function(e){
+				var e = e || window.event;
+				son.style.display = "block";
+				move.style.display = "block";
+				move.style.left = e.clientX - fa.offsetLeft - move.offsetWidth/2 + "px";
+				move.style.top = e.clientY - fa.offsetTop - move.offsetHeight/2 + "px";
+				//var startX = getStyle(move,"left");
+				//var startMX = e.clientX;
+				//var startY = getStyle(move,"top");
+				//var startMY = e.clientY;
+				fa.onmousemove = function(e){
+					var e = e || window.event;
+					var newX = e.clientX - fa.offsetLeft - move.offsetWidth/2;
+					var newY = e.clientY - fa.offsetTop - move.offsetHeight/2;
+					if( newX <= 0 ){
+						newX = 0;
+					}else if( newX >= fa.clientWidth - move.offsetWidth){
+						newX = fa.clientWidth - move.offsetWidth;
+					};
+					if( newY <= 0 ){
+						newY = 0;
+					}else if( newY >= fa.clientHeight - move.offsetHeight){
+						newY = fa.clientHeight - move.offsetHeight;
+					}; 
+					move.style.left = newX + "px";
+					move.style.top = newY + "px";
+					son.scrollLeft = newX * 2.3;
+					son.scrollTop = newY * 2.3;
+				};
+			};
+			fa.onmouseout = function(){
+				son.style.display = "none";
+				move.style.display = "none";
+			};
+		};
+	</script>
+</head>
+<body>
+<div id="father" class="father">
+	<img src="1.jpg" title="1.jpg" alt="1.jpg"/>
+	<div id="move" class="move"></div>
+</div>  
+<div id="son" class="son">
+	<img src="2.jpg" id="img" title="2.jpg" alt="2.jpg"/>
+</div>
+</body>
+</html>
