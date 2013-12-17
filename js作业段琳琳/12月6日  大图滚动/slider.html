@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title> New Document </title>
+<meta name="Generator" content="EditPlus">
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	#slider{
+		width: 976px;
+		height: 400px;
+		border:1px solid red;
+		margin: 50px auto;
+		overflow:hidden;
+	}
+
+	#slider img{
+		width: 976px;
+	}
+</style>
+</head>
+<body>
+	<input type="button" id="nextBtn" value="下一个" />
+	<div id="slider">
+		<table cellpadding=0 cellspacing=0>
+			<tr>
+				<td>
+					<img src="images/1.jpg" />
+				</td>
+				<td>
+					<img src="images/2.jpg" />
+				</td>
+				<td>
+					<img src="images/3.jpg" />
+				</td>
+				<td>
+					<img src="images/4.jpg" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<script>
+		function getStyle(tag, prop){
+			var value;
+			// 如果是css样式
+			if (prop in document.body.style){
+				if (window.getComputedStyle){
+					value = document.defaultView.getComputedStyle(tag, null)[prop];
+				}else{
+					value = tag.currentStyle[prop];
+				}
+			// exa. scrollLeft scrollTop aaabbb
+			}else{
+				value = tag[prop];
+			}
+			
+			
+			value = parseFloat(value);
+
+			if (isNaN(value)){
+				value = 0;
+			}
+
+			return value;
+		}
+
+		function moveTo(dom, prop, end, duration){
+			var start = getStyle(dom, prop); // 起点
+			//var end = 100; // 终点
+			//var duration = 150; // 总步数
+			var speed = (end - start) / duration; // 速度
+			var x = start;   // 运动中动态计算的变量
+
+			var tprop = "_t_" + prop; // "_t_width"
+
+			if (dom[tprop]){
+				clearInterval(dom[tprop]);
+			}
+			dom[tprop] = setInterval(function(){
+				x += speed;
+				if ((speed > 0 && x >= end) || 
+					(speed < 0 && x <= end)){
+					x = end;
+					clearInterval(dom[tprop]);
+				}
+
+				if (prop in document.body.style){
+					dom.style[prop] = x + "px";
+				}else{
+					dom[prop] = x;
+				}
+				
+			},17);
+		}
+
+		
+		var slider = document.getElementById("slider");
+		var nextBtn = document.getElementById("nextBtn");
+
+
+		var ind = 0;
+
+		function show(index){
+			//slider.scrollLeft = 976 * index;
+			moveTo(slider,"scrollLeft",976 * index,50)
+		}
+
+		nextBtn.onclick = function(){
+			ind ++;
+			if (ind >= 4){
+				ind = 0;
+			}
+			show(ind);
+		}
+	</script>
+</body>
+</html>

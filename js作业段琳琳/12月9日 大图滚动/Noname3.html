@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{height:150px;width:150px;background:red; color:black; font-size:40px;display:none;}
+		div.select{ display:block;}
+	</style>
+	<script>
+		window.onload=function(){
+			var div = document.getElementsByTagName("div");
+			var inp = document.getElementsByTagName("input");
+			for( var i = 0; i < inp.length;i++){
+				inp[i].index = i;
+				inp[i].onclick = function(){
+					for(var i = 0; i < inp.length;i++){
+						if(this == inp[i]){
+							div[i].className = "select";
+						}else{
+							div[i].className = " ";
+						};
+					}	
+				};
+				
+			};
+			var string =[1,2,3,4,5];
+			//string:oo:pp:"0";
+			alert(typeof(string));  //弹出number
+		}
+	</script>
+</head>
+<body>
+  <div class="select">1</div>
+  <div>2</div>
+  <div>3</div>
+  <input type="button" value="标题1"/>
+  <input type="button" value="标题2"/>
+  <input type="button" value="标题3"/>
+</body>
+</html>

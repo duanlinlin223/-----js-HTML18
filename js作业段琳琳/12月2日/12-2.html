@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+</head>
+<body>
+<script>
+	setTimeout(my,1000);
+	var ind = 0;
+	function my(){
+		ind++;
+		setTimeout(my,1000);
+		alert(ind);  // 弹出的是每隔一秒之后变化的数值 ,在函数里面每加一次就弹出一个相应的值。 
+	}
+	// alert在函数外面只能弹出一次，上面的函数在不断的递加，但是不会弹出数值。 
+</script>
+</body>
+</html>

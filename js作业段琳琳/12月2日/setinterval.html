@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{
+			height:50px;
+			width:50px;
+			background:blue;
+		}
+	</style>
+</head>
+<body>
+  <div></div>
+  <script>
+	var div=document.getElementsByTagName("div")[0];
+	var ind=0;
+	var timer=null;
+	setInterval(function(){
+		ind++;
+		if( ind>200){
+			ind-=200;
+		}
+		div.style.width=ind+"px";
+		div.style.height=ind+"px";
+	},33)
+  </script>
+</body>
+</html>

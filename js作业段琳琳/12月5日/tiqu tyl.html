@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+		#div1{
+			height:100px;width:100px;background:red;margin-left:0;
+		}
+	</style>
+	<script>
+		window.onload = function (){
+			var div1 = document.getElementById("div1");
+			function move(start, end, duration){
+				//var start = 0;  //起点
+				//var end = 200;  //终点
+				//var duration = 10;  // 总的步数
+				var change = (end - start)/duration;  //速度
+				var x = start;
+				var t = setInterval(function(){
+					x += change;
+					if( (change >= 0 && x >= end)||(change <= 0 && x <= end)){
+						x = end;
+						clearInterval(t)
+					};
+					div1.style.marginLeft = x + "px";
+				},17);	
+			}
+			move(400,0,15);
+		}
+	</script>
+</head>
+<body>
+ <div id="div1"></div> 
+</body>
+</html>

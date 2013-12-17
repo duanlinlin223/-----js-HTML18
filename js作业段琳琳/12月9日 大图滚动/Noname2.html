@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{height:100px;width:100px; background:red;color:white; font-size:50px; display:none;}
+		div.active{display:block;}
+	</style>
+	<script>
+		window.onload=function(){
+			var div = document.getElementsByTagName("div");
+			var inp = document.getElementsByTagName("input");
+			for( var i = 0; i < inp.length;i++){
+				inp[i].index = i;
+				inp[i].onclick = function (){
+					for( var i = 0; i < inp.length;i++){
+						if(this == inp[i]){
+						div[i].className="active";
+						}else{
+							div[i].className=" ";	
+						};	
+					};
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+  <input type="button" value="按钮1"/>
+  <input type="button" value="按钮1"/>
+  <input type="button" value="按钮1"/>
+  <div class="active">1</div>
+  <div>2</div>
+  <div>3</div>
+</body>
+</html>

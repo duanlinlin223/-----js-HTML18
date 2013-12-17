@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.test{height:100px;width:100px; position:absolute; background:#cc00ff;}
+	</style>
+	<script>
+		window.onload = function(){
+			var test = document.getElementById("test");
+			document.onmousedown = function(ev){
+				var oEvent = ev || event;
+				var disx = oEvent.clientX - test.offsetLeft;
+				var disy = oEvent.clientY - test.offsetTop;
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					var x = oEvent.clientX - disx;
+					var y = oEvent.clientY - disy;
+					test.style.left = x + "px";
+					test.style.top = y + "px";
+				};
+				document.onmouseup = function(){
+					document.onmousemove=null;
+				};
+			};
+		};
+	</script>
+</head>
+<body>
+ <div id="test" class="test"></div> 
+</body>
+</html>

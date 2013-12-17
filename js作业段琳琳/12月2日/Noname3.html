@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{
+			height:50px;
+			width:50px;
+			background:red;
+		}
+	</style>
+</head>
+<body>
+<div></div>
+<script>
+	var div=document.getElementsByTagName("div")[0];
+	var ind=50;
+	setTimeout(size,17);
+	function size(){
+		ind++;
+		if(ind>500){
+			clearTimeout(size());
+		}
+		div.style.width=ind+"px";
+		setTimeout(size,17);
+		
+	}
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{height:50px;width:50px;background:red;}
+	</style>
+	<script>
+		window.onload = function(){
+			var div = document.getElementsByTagName("div")[0];
+			var ind = 50;
+			var speed = 1;
+			//setTimeout(move,17);
+			function move (){
+				if(ind == 50){
+					speed = 1;
+				};
+				if(ind == 300){
+					speed = -1;
+				};
+				ind+=speed;
+				div.style.height = ind + "px";
+				div.style.width = ind + "px";
+				//setTimeout(move,17);
+			};
+			setInterval(move,33)
+		};
+	</script>
+</head>
+<body>
+ <div></div>
+</body>
+</html>

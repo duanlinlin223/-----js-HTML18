@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.out{
+			height:300px;
+			width:1000px;
+			border:1px solid red;
+			position:relative;
+		}
+		.inner{
+			height:20px;
+			width:20px;
+			background:blue;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+<div id="out" class="out">
+	<div id="inner" class="inner"></div>
+</div>  
+<script>
+	var out = document.getElementById("out");
+	var inner = document.getElementById("inner");
+	var Width = out.clientWidth - inner.offsetWidth;
+	var Height = out.clientHeight - inner.offsetHeight;
+	var x = 0;
+	var y = 0;
+	var posx = true;
+	var posy = true;
+	setInterval(function(){
+		if( posx){
+			if(x > 0){
+				x--;
+			}else{
+				posx = false;
+			};
+		}else{
+			if(x < Width){
+				x++;
+			}else{
+				posx = true;
+			}
+		}
+		if( posy){
+			if(y > 0){
+				y--;
+			}else{
+				posy = false;
+			};
+		}else{
+			if(y < Height){
+				y++;
+			}else{
+				posy = true;
+			}
+		}
+		inner.style.left = x + "px";
+		inner.style.top = y + "px";
+	},10)
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+		#div1{
+			height:100px;width:100px;background:red;
+		}
+		#div2{
+			height:100px;width:100px;background:blue;
+		}
+	</style>
+	<script>
+		window.onload = function (){
+			var div1 = document.getElementById("div1");
+			var div2 = document.getElementById("div2");
+			function move(dom, prop, start, end, duration){
+				//var start = 0; //起点
+				//var end = 300; // 终点
+				//var duration = 20; //总步数
+				var x = start;
+				var speed = (end - start)/duration;
+				var tprop ="_t_" + prop;
+			//	alert(dom[tprop])
+				if(dom[tprop]){
+					clearInterval(dom[tprop])
+				}
+				dom[tprop] = setInterval(function(){   //为什么要让dom[tprop]等于计时器
+					x += speed;
+					if( (x >= end && speed >= 0)||(x <= end && speed <= 0 )){
+						x = end;
+						clearInterval(dom[tprop]);
+					};
+					dom.style[prop] = x + "px";
+				},17)	
+			}
+			move(div1,"marginLeft", 0, 300, 20);
+			move(div2,"marginLeft", 400, 0, 20);
+			setTimeout(function(){
+				move(div1,"marginLeft", 300, 0, 20)
+				move(div2,"width", 100, 200, 100);
+
+			},1000);
+		}
+	</script>
+</head>
+<body>
+ <div id="div1"></div> 
+ <div id="div2"></div>
+</body>
+</html>

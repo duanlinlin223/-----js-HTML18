@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.out{height:240px;width:670px;overflow:hidden;position:relative;}
+		.inner{height:240px;width:9999px; position:absolute;}
+		.inner img{float:left;}
+	</style>
+	<script src="tween.js"></script>
+	<script>
+		window.onload=function(){
+			var out = document.getElementById("out");
+			var inner = document.getElementById("inner");
+			var img = document.getElementsByTagName("img");
+			var inp = document.getElementsByTagName("input");
+			var timer = null;
+			var timer2 = null;
+			function move(){
+				var start = inner.offsetLeft;
+				var end = -img[0].offsetWidth*index;
+				var change = end - start;
+				var ind = 0;
+				clearInterval(timer);
+				timer = setInterval(function (){
+					ind++;
+					if( ind > 30){
+						ind = 30;
+						clearInterval(timer);
+					};
+					inner.style.left = Tween.Bounce.easeOut( ind, start, change, 30)+"px";
+				},33);
+			};
+			timer2 = setInterval(function(){
+				//index = this.index;
+				move();
+			},3000);
+			for(var i = 0; i < inp.length; i++){
+				inp[i].index = i;
+				inp[i].onmouseover = function(){
+					index = this.index;
+					move();
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+ <div id="out" class="out">
+	<div id="inner" class="inner">
+		<img src="1.jpg"/>
+		<img src="2.jpg"/>
+		<img src="3.jpg"/>
+		<img src="4.jpg"/>
+		<img src="5.jpg"/>
+		<img src="6.jpg"/>
+		<img src="7.jpg"/>
+	</div>
+ </div> 
+ <input type="button" value="图1"/>
+ <input type="button" value="图2"/>
+ <input type="button" value="图3"/>
+ <input type="button" value="图4"/>
+ <input type="button" value="图5"/>
+ <input type="button" value="图6"/>
+ <input type="button" value="图7"/>
+</body>
+</html>

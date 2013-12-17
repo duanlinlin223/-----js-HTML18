@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;padding:0;
+	}
+		#out{
+			height:150px;width:920px;overflow:hidden;
+			border:1px dotted blue;
+		}
+		#inner{
+			width:1940px;
+			height:150px;
+		}
+		#inner img{
+			float:left;
+		}
+	</style>
+</head>
+<body>
+<div id="out">
+	<div id="inner">
+		<img src="rabbit.jpg"/>
+		<img src="rabbit1.jpg"/>
+		<img src="rabbit2.jpg"/>
+		<img src="rabbit3.jpg"/>
+	</div>
+</div>
+<script>
+window.onload=function(){
+	var out = document.getElementById("out");
+	var inner = document.getElementById("inner");
+	var inner1 = document.getElementById("inner");
+	var img = document.getElementsByTagName("img");
+	var x = 0;
+	var width = img[0].offsetWidth*4;
+	var timer=null;
+	//alert(img.length)
+	//alert(width);
+	inner1.innerHTML=inner.innerHTML+inner.innerHTML;
+	function move(){
+		x++;
+		if(x >= width){
+			x -= width;
+		};
+		out.scrollLeft = x;
+	};
+	timer = setInterval(move,17);
+	out.onmouseover = function(){
+		clearInterval(timer);	
+	}
+	out.onmouseout = function(){
+		timer = setInterval(move,17);	
+	}
+}
+</script>
+</body>
+</html>

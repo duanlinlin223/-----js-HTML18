@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var div = document.getElementsByTagName("div")[0];
+			function add(time){
+				if(time<10){
+					return "0" + time;
+				}else{
+					return time;
+				}
+			}
+			function time(){
+				var oDate= new Date();
+				var h = oDate.getHours();
+				var m = oDate.getMinutes();
+				var s = oDate.getSeconds();
+				div.innerHTML = h + ":" + add(m) + ":" + add(s);
+			}
+			setInterval(time,1000)
+		}
+	</script>
+</head>
+<body>
+ <div></div> 
+</body>
+</html>

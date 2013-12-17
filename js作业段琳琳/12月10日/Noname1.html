@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		div{height:30px; width:100px;background:blue;margin-bottom:4px;}
+	</style>
+</head>
+<body>
+<div id="div"></div>
+<div id="div"></div>
+<div id="div"></div>
+<div id="div"></div>
+<script>
+	var div = document.getElementsByTagName("div");
+	div[1].onclick=function(){
+		alert(this==div[0]);
+	};
+</script> 
+</body>
+</html>

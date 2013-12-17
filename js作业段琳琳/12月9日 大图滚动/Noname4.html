@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var div = document.getElementsByTagName("div")[0];
+			function sing(){
+				//with(arguments.callee);
+				//alert(author+":"+poem);
+				div.innerHTML = author+':'+poem;
+			};
+			sing:author="李白";
+			//sing:poem="汉家秦越地，流影照明妃。一上玉关道，天涯去不归...";
+			//sing();
+			sing:poem="汉家秦越地，流影照明妃";
+			sing();
+		}
+	</script>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

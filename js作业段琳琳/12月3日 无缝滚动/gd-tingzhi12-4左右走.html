@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;padding:0;
+	}
+		#out{
+			height:150px;width:920px;overflow:hidden;
+			border:1px dotted blue;
+		}
+		#inner{
+			width:1940px;
+			height:150px;
+		}
+		#inner img{
+			float:left;
+		}
+		input{
+			height:30px;width:100px;
+			margin:0 150px;
+		}
+	</style>
+</head>
+<body>
+<div id="out">
+	<div id="inner">
+		<img src="rabbit.jpg"/>
+		<img src="rabbit1.jpg"/>
+		<img src="rabbit2.jpg"/>
+		<img src="rabbit3.jpg"/>
+	</div>
+</div>
+<input type="button" value="left" id="left"/>
+<input type="button" value="right" id="right"/>
+<script>
+window.onload=function(){
+	var out = document.getElementById("out");
+	var left = document.getElementById("left");
+	var right = document.getElementById("right");
+	var inner = document.getElementById("inner");
+	var inner1 = document.getElementById("inner");
+	var img = document.getElementsByTagName("img");
+	var x = 0;
+	var width = img[0].offsetWidth*4;
+	var timer=null;
+	var timer1;
+	var y = width;
+	inner1.innerHTML = inner.innerHTML + inner.innerHTML;
+	//var speed = 2;
+	function fMove(){
+	function move(){
+		//clearInterval(timer);
+		x ++;
+		if(x % img[0].offsetWidth == 0){
+			clearInterval(timer);
+			setTimeout(function(){
+				timer = setInterval(move,17);
+			},1000);
+		};
+		if(x >= width){ // 判断向右走的临界值
+			x -= width;
+		};
+		/*if( x >= width){ // 判断向左走的临界值
+			x -= width;
+		};
+		if( speed > 0 && x >= width){ // 判断点击向右走
+			x -= width;
+		};
+		if( speed < 0 && x <= 0){ // 判断点击向左走
+			x = width;
+		};*/
+		out.scrollLeft = x;
+		
+	}
+	timer = setInterval(move,17);
+	}
+	function moveRight(){
+		// clearInterval(timer1);
+		y--;
+		if(y % img[0].offsetWidth == 0){
+			clearInterval(timer1);
+			setTimeout(function(){
+				timer1 = setInterval(moveRight,17)
+			},1000);
+		};
+		if( y <= 0){
+				y += width;
+		};
+		out.scrollLeft = y;
+	}
+	timer1 = setInterval(moveRight,17);
+	/*out.onmouseover = function (){
+		timer = clearInterval(timer);
+	};
+	out.onmouseout = function (){
+		timer = setInterval(move,17);
+	};*/
+	left.onclick = function(){
+		//clearInterval( timer)
+		timer = setInterval(moveRight,17);
+	};
+	right.onclick = function(){
+		//clearInterval(timer1)
+		timer1 = setInterval(fMove,17);
+	}
+}
+</script>
+</body>
+</html>

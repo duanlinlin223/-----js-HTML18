@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		#div1{height:100px; width:100px; margin-left:50%; background:red;}
+	</style>
+	
+</head>
+<body>
+  <div id="div1" style="height:200px;"></div>
+  <script>
+		window.onload = function(){
+			var div1 = document.getElementById("div1");
+			alert(div1.style.height)  //只能弹出style里面有的height样式，若没有则弹出一个空框  
+			function getStyle(tag,prop){
+				if(window.getComputedStyle){
+					return document.defaultView.getComputedStyle(tag,null)[prop];
+				}else{
+					return  tag.currentStyle[prop];
+				}
+			}
+
+			var ml = getStyle(div1,"marginLeft")
+			alert(ml);
+
+			//var style = document.defaultView.getComputedStyle(div1,null);
+			//console.log(style["height"]);
+		} 
+	</script>
+</body>
+</html>

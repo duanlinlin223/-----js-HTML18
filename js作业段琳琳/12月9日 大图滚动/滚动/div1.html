@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.div1{ height:100px;width:100px; background:green;position:absolute;}	
+	</style>
+	<script src="tween.js"></script>
+	<script>
+		window.onload =function(){
+			var div1 = document.getElementById("div1");
+			var t = 0;
+			var b = 0;
+			var c = 1000;
+			var d = 100;
+			 var m = setInterval(function(){
+				t++;
+				if( t > d){
+					t = d;
+					clearInterval(m)
+				}
+				div1.style.left = Tween.Elastic.easeOut(t, b, c, d) + "px";
+			
+			},17);
+		};
+	</script>
+</head>
+<body>
+  <div id="div1" class="div1"></div>
+</body>
+</html>

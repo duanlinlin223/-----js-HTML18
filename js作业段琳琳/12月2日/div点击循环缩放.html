@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;padding:0;
+		}
+		div{
+			height:50px;width:50px;background:blue;position:absolute;
+		}
+	</style>
+</head>
+<body>
+  <div></div>
+  <script>
+	var div = document.getElementsByTagName("div")[0];
+	var ind = 50;
+	var x = true;
+	div.onclick = function(){
+		setTimeout(size,17);
+		function size(){
+			if(x == true){
+				if(ind < 300){
+					ind++;
+				}else{
+					x = false;
+				};
+			}else{
+				if(ind >= 0){
+					ind--;
+				}else{
+					x = true;
+				};
+			};
+			setTimeout(size,17);
+			div.style.width = ind + "px";
+			div.style.height = ind+ "px";
+		}
+			
+	}	
+		
+  </script>
+</body>
+</html>

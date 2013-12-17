@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.nav{height:40px;width:1210px;background:#e4393c;}
+		.list{width:208px;height:416px;font-weight:normal;border:solid #E4393C; background:#fafafa;border-width:0 2px 2px;position:relative;}
+		.list .list-nav{height:30px;width:208px;border-bottom:1px solid white;}
+		.list-nav h3 a{font-size:14px;color:black;text-decoration:none;line-height:30px;}
+		.list-nav h3 a:hover{font-weight:bold;font-size:16px;color:#e4393c;text-decoration:underline;}
+		.list-nav .item{height:394px;width:700px;background:white; border:1px solid #ddd;position:absolute;top:3px;left:198px;display:none;}
+	</style>
+</head>
+<body>
+	<div class="nav"></div>
+	<div id="list" class="list">
+		<div class="list-nav"><h3><a href="###">图书</a>、<a href="###">音像</a>、<a href="###">数字产品</a></h3>
+			<div id="item" class="item"></div>
+		</div>
+		<div class="list-nav"><h3><a href="###">家用电器</a></h3></div>
+		<div class="list-nav"><h3><a href="###">手机</a>、<a href="###">数码</a></h3></div>
+		<div class="list-nav"><h3><a href="###">彩票</a>、<a href="###">旅行</a>、<a href="###">充值</a></h3></div>
+		<div class="list-nav"><h3><a href="###">图书</a>、<a href="###">音像</a>、<a href="###">数字产品</a></h3></div>
+		<div class="list-nav"><h3><a href="###">彩票</a>、<a href="###">旅行</a>、<a href="###">充值</a></h3></div>
+		<div class="list-nav"><h3><a href="###">图书</a>、<a href="###">音像</a>、<a href="###">数字产品</a></h3></div>
+		<div class="list-nav"><h3><a href="###">彩票</a>、<a href="###">旅行</a>、<a href="###">充值</a></h3></div>
+		<div class="list-nav"><h3><a href="###">图书</a>、<a href="###">音像</a>、<a href="###">数字产品</a></h3></div>
+		<div class="list-nav"><h3><a href="###">图书</a>、<a href="###">音像</a>、<a href="###">数字产品</a></h3></div>
+		<div class="list-nav"><h3><a href="###">彩票</a>、<a href="###">旅行</a>、<a href="###">充值</a></h3></div>
+		<div class="list-nav"><h3><a href="###">图书</a>、<a href="###">音像</a>、<a href="###">数字产品</a></h3></div>
+		<div class="list-nav"><h3><a href="###">彩票</a>、<a href="###">旅行</a>、<a href="###">充值</a></h3></div>
+	</div>
+	<script>
+	window.onload = function(){
+		var list = document.getElementById("list");
+		var sons = list.children;
+		var item = document.getElementById("item");
+		for( var i = 0; i < sons.length; i++){
+			sons[i].index = i;
+			sons[i].onmouseover = function(){
+				
+				item.style.display = "block";
+				sons[this.index].style.background = "white";
+				sons[this.index].style.borderTop = "1px solid #ddd";
+				sons[this.index].style.borderBottom = "1px solid #ddd";
+			};
+			sons[i].onmouseout = function(){
+				item.style.display = "none";
+				sons[this.index].style.background = "#f5f5f5";
+				sons[this.index].style.borderTop = "1px solid white";
+				sons[this.index].style.borderBottom = "1px solid white";
+			};
+		};
+		
+	};
+	</script>
+</body>
+</html>

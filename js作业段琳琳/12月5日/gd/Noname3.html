@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;padding:0;
+		}
+		body{
+			background:black;
+		}
+		#out{ height:132px;width:272px;overflow:hidden;border:1px solid blue;}
+		#inner{height:9999px;width:272px;}
+		#inner img{ float:left; height:130px; width:270px; border:1px solid red;}
+	</style>
+	<script>
+		window.onload = function (){
+			var out = document.getElementById("out");
+			var inner = document.getElementById("inner");
+			var img = inner.getElementsByTagName("img");
+			inner.innerHTML += inner.innerHTML;
+			var t = 0;
+			var height = img[0].offsetHeight*6;
+			var timer = null;
+			function move(){
+				t--;
+				if(t <= 0){
+					t += height;
+				};
+				if( t % img[0].offsetHeight == 0){
+					clearInterval(timer)
+					timer = setTimeout(function(){
+						timer = setInterval(move,17);
+					},1000)
+				}
+				out.scrollTop = t;
+			};
+			timer = setInterval(move,17);
+		}
+	</script>
+</head>
+<body>
+  <div id="out">
+	<div id="inner">
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+	</div>
+  </div>
+</body>
+</html>

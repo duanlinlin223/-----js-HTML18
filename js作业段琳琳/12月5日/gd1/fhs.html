@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		body{background:#ccc;}
+		#div1{width:700px;height:100px;overflow:hidden;border:1px solid red;}
+		#div1 #inner{ width:1000px;height:100px;}
+		#div1 #inner img{height:100px;width:210px;float:left;}
+	</style>
+	<script>
+		window.onload = function(){
+			var div1 = document.getElementById("div1");
+			var inner = document.getElementById("inner");
+			var inner1 = document.getElementById("inner");
+			var img = inner.getElementsByTagName("img");
+			//	alert(img.length)
+			inner1.innerHTML = inner.innerHTML + inner.innerHTML;
+			function move(dom, prop, start, end, duration){
+				//var start = 0;	//起点
+				//var end = 400;	//终点
+				//var duration = 30;	//总步数
+				var speed = (end-start)/duration;	//速度
+				var x = start;
+				var tprop = "_t_" + prop;
+				
+				if(dom[tprop]){
+					clearInterval(dom[tprop]);
+				};
+				dom[tprop] = setInterval(function(){
+					x += speed;
+					if((x >= end && speed >= 0)||(x < end && speed < 0)){
+						x -= end;
+						clearInterval(dom[tprop])
+					};
+					dom[prop] = x ;
+				},17);
+			};
+			
+			move(div1,"scrollLeft",0,(inner.offsetWidth),100);
+			/*setTimeout(function(){
+				move(div1,"borderRadius",0,50,100)	
+			},1000)*/
+		}
+	</script>
+</head>
+<body>
+<div id="div1">
+	<div id="inner">
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+		<img src="1.png"/>
+	</div> 
+</div> 
+</body>
+</html>

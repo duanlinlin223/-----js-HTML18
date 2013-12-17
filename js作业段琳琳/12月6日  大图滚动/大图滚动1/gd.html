@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.slider{height:240px;width:670px;margin:50px auto;overflow:hidden;_position:relative;_top:50px;}
+		.slider img{width:670px;}
+		.prev{height:240px;width:20px;background:#ff0066;color:white;font-size:22px;line-height:240px;text-align:center;font-weight:bold;position:absolute;left:330px;top:50px;z-index:10;cursor:pointer;}
+		.next{height:240px;width:20px;background:#ff0066;color:white;font-size:22px;line-height:240px;text-align:center;font-weight:bold;position:absolute;right:330px;top:50px;cursor:pointer;z-index:10;}
+		#nav{ height:22px;position:absolute;right:350px;top:260px;}
+		#nav span{
+			height:22px;width:22px;background:#ccc;border-radius:12px;float:left;text-align:center;line-height:22px;color:white;margin-right:4px;display:inline;font-size:14px;font-family:Arial;cursor:pointer;}
+	</style>
+</head>
+<body>
+	<div id="prev" class="prev">&lt;</div>
+	<div id="next" class="next">&gt;</div>
+	<div id="slider" class="slider">
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td> <img src="1.jpg"/></td>
+				<td> <img src="2.jpg"/></td>
+				<td> <img src="3.jpg"/></td>
+				<td> <img src="4.jpg"/></td>
+				<td> <img src="7.jpg"/></td>
+				<td> <img src="6.jpg"/></td>
+			</tr>
+		</table>
+		<div id="nav">
+			<span>1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+			<span>6</span>
+		</div>
+	</div> 
+	<script>
+		window.onload = function(){
+			var slider = document.getElementById("slider");
+			var next = document.getElementById("next");
+			var prev = document.getElementById("prev");
+			var img = slider.getElementsByTagName("img");
+			var nav = document.getElementById("nav");
+			var span = slider.getElementsByTagName("span");
+			var timer = null;
+			//var dom[tprop] = null;
+			function getStyle(Tag,prop){
+				var value;
+				if(prop in document.body.style){
+					if( window.getComputedStyle){
+						value =  document.defaultView.getComputedStyle(Tag,null)[prop];
+					}else{
+						value =  Tag.currentStyle[prop];
+					};	
+				}else{
+					value = Tag[prop];
+				};
+				
+				value = parseFloat(value);
+				if(isNaN(value)){
+					value = 0;
+				};
+				return value;
+			};
+			function move(dom, prop,  end, duration){
+				//var start = 0;
+				//var end = 3500;
+				//var duration = 50;
+				var start = getStyle(dom,prop);
+				var x = start;
+				var speed = (end - start)/duration;
+				var tprop = "_t_" + prop;
+				if(dom[tprop]){
+					clearInterval(dom[tprop]);
+				};
+				dom[tprop] = setInterval(function(){
+					x += speed;
+					if((x >= end && speed >= 0)||(x <= end && speed <= 0)){
+						x = end;
+						clearInterval(dom[tprop]);
+					};
+					if(prop in document.body.style){
+						dom.style[prop] = x + "px";
+					}else{
+						dom[prop] = x;
+					}
+				},17)
+			};
+			
+			var ind = 0;
+			function show(index){
+				move(slider,"scrollLeft",670*index,50);
+			};
+			// 上一个
+			prev.onclick = function(){
+				ind--;
+				if( ind < 0){
+					ind = img.length -1;
+				};
+				show(ind);	
+			};
+			// 下一个
+			next.onclick = nexts;
+			function nexts(){
+				//clearInterval(timer);
+				ind++;
+				if( ind >= 6){
+					ind = 0;
+				};
+				show(ind);	
+			};
+			//自动滚动;
+			timer = setInterval(function(){
+				nexts();
+			},3000);
+			//   跟随导航滚动 tab切换;
+			for( var i= 0; i < span.length; i++){
+				span[i].index = i;
+				span[i].onmouseover= function(){
+					clearInterval(timer);
+					this.style.background = "red";
+					ind = this.index ;
+					show(this.index);
+				};
+				span[i].onmouseout = function (){
+					timer = setInterval(function(){
+						nexts();
+					},3000);	
+				};
+			};
+		};
+	</script>
+</body>
+</html>
