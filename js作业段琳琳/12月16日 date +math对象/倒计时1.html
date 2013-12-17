@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var test = document.getElementById("test");
+			var t = null;
+			function time (){
+				var oDate = new Date(2014,0,31);
+				var oldDate = new Date();
+				var ms = oDate.getTime() - oldDate.getTime();
+				var s = parseInt(ms / 1000)%60;
+				var d = parseInt(ms / 86400000);
+				var h = parseInt(ms / 3600000)%24;
+				var m = parseInt(ms / 60000)%60;
+				if( ms == "0"){
+					clearInterval(t);
+				};
+				test.innerHTML = "距离2014年春节还有："+d +"天"+h+"时"+m+"分"+s+"秒";
+			};
+			t = setInterval(time,1000);
+		};
+	</script>
+</head>
+<body>
+  <div id="test" class="test"></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+</head>
+<body>
+<script>
+	var old = new Date();
+	var a = old.getTime();
+	var j = 0;
+	for(var i = 0; i < 1000000; i++){
+		j += 1;
+	};
+	var news = new Date();
+	var b = news.getTime();
+	alert(a);
+	alert(b);
+	alert(b - a);
+</script>  
+</body>
+</html>

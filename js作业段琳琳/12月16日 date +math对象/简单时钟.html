@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var txt = document.getElementById("txt");
+			function add(i){
+				if( i < 10 ){
+					i = i + "0";
+				};
+				return i;
+			};
+			function times(){
+				var time = new Date();
+				h = time.getHours();
+				m = time.getMinutes();
+				s = time.getSeconds();
+				txt.innerHTML = h + "时" + add(m) + "分" + add(s);
+			};
+			setInterval(times,1000);
+		};
+	</script>
+</head>
+<body>
+ <div id="txt"></div> 
+</body>
+</html>

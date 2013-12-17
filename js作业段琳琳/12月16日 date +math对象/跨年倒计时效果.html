@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<style>
+		.txt{font-family:Arial;color:#000033;font-size:20px;font-weight:bold;}
+	</style>
+	<script>
+		window.onload = function(){
+			var txt = document.getElementById("txt");
+			var t = null;
+			function time(){
+				var oDate = new Date(2014,0,31);  //	设置2014年1月31日
+				var newDate = new Date();
+				var ms = oDate.getTime() - newDate.getTime();
+				var d = parseInt(ms/86400000);  //	天数;
+				var h = parseInt(ms/3600000)%24;   //	小时数;
+				var m = parseInt(ms/60000)%60;  //	分钟数;
+				var s = parseInt(ms/1000)%60; //	秒数;
+				if( ms == "0"){
+					clearInterval(t);
+					alert("HAPPY NEWYEAR")
+				};
+				//	; d + "天" + h + "小时" + m +"分钟" + s +"秒数";
+				txt.innerHTML = "距离2014年春节还有:" + d + "天" + h + "时" + m +"分" + s + "秒";
+			};
+			//time();
+			t = setInterval(time,1000);
+		};
+	</script>
+</head>
+<body>
+ <div id="txt" class="txt"></div> 
+</body>
+</html>

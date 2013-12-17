@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var test = document.getElementById("test");
+			var arr = [];
+			for ( i = 1;i <= 100 ; i++ ){
+				arr.push("标题" + i);
+			};
+			for ( i = 0; i < 5 ; i++ ){
+				var rand = parseInt( Math.random()*arr.length);
+				test.innerHTML += arr[rand] + "   ";
+			};
+		};
+	</script>
+</head>
+<body>
+  <div id="test"></div>
+</body>
+</html>
