@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<link rel="stylesheet" type="css/text" href="bootstrap.min.css"/>
+	<style>
+		body{background:#bee1f5;}
+		.out{width:900px;margin:200px auto;}
+		.out .left{width:60%;}
+		.out .right{width:40%;}
+		.size{width:343px;}
+		.pw{margin-top:30px;}
+		.login{width:178px;}
+		.login,.regist{margin-top:30px;}
+		.unregist{font-family:Arial;color:#666;}
+		.bottom{margin-top:30px;}
+	</style>
+	<script src="jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	<div class="out">
+		<div class="row">
+			<div class="col-md-6 left"><img src="11.jpg"/></div>
+			<div class="col-md-6 right">
+				<form class="form-inline" role="form">
+					<div class="form-group">
+						<input type="email" class="form-control uname" id="exampleInputEmail2" placeholder="用户名">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control pw" id="exampleInputPassword2" placeholder="密码">
+					</div>
+					<a href="userstar.html"><button type="submit" class="btn btn-default login">登录</button></a>
+					<div class="bottom">
+						<span class="unregist">还没有微博帐号？</span>
+						<a class="regist" href="regist.html">立即注册</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(function(){
+		$(".login").click(function(){
+			if($(".uname").val() == "" || $(".pw").val() == ""){
+				alert("用户名或密码错误")
+			}else{
+				$.ajax({
+					url : "http://ajaxh518.taobaoxyz.com/api/user/?method=login&name="+$(".uname").val()+"&password="+$(".pw").val(),
+					type : "get",
+					dataType : "jsonp",
+					jsonp : "jsoncb",
+					success : function(data){
+						if(data.done){
+							window.location.href ="userstar.html";
+						}else{
+							if(data.code == 1){
+								alert("其他错误")
+							}else if(data.code == 0){
+								alert("用户名或密码错误")
+							};
+						};
+					},
+					error : function(){
+						alert("error")
+					}
+				});
+			};
+		});
+	})
+	</script>
+</body>
+</html>
