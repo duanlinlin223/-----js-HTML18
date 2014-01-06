@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<link rel="stylesheet" type="css/text" href="bootstrap.min.css"/>
+	<style>
+		.out{width:900px;margin:200px auto;}
+		.out .left{width:60%;}
+		.out .right{width:40%;}
+		.right{margin-top:40px;}
+		.size{width:343px;}
+		.pw{margin-top:30px;}
+		.login{width:178px;}
+		.login,.regist{margin-top:30px;}
+		.bottom{margin-top:30px;}
+	</style>
+	<script src="jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	<div class="out">
+		<div class="row">
+			<div class="col-md-6 left"><img src="12.jpg"/></div>
+			<div class="col-md-6 right">
+				<form class="form-inline" role="form">
+					<div class="form-group">
+						<input type="email" class="form-control uname" id="exampleInputEmail2" placeholder="用户名">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control pw" id="exampleInputPassword2" placeholder="密码">
+					</div>
+					<button type="submit" class="btn btn-default login">注册</button>
+					<div class="bottom">
+						<span class="unregist">注册成功？</span>
+						<a class="regist" href="index.html">立即登录</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$(".login").click(function(){
+				if($(".uname").val() == ""){
+					alert("请输入用户名")
+				};
+				if($(".pw").val() == ""){
+					alert("请输入密码")
+				};
+				$.ajax({
+					url : "http://ajaxh518.taobaoxyz.com/api/user/?method=regist&name="+$(".uname").val()+"&password="+$(".pw").val(),
+					type : "get",
+					dataType : "jsonp",
+					jsonp : "jsoncb",
+					success : function(data){
+						if(data.done){
+							alert("注册成功")
+						//	$(".uname").val("")
+						//	$(".pw").val("")
+							window.location.href ="index.html";
+						}else{
+							if(data.code == 1){
+								alert("用户信息不全")
+							}else if(data.code == 2){
+								alert("用户名重复")
+							}
+						};
+					},
+					error : function(){
+						alert("error")
+					}
+				});
+			});
+		})
+	</script>
+</body>
+</html>

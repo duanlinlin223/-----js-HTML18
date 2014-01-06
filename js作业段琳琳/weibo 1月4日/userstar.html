@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="Description" content="" />
+	<title>Document</title>
+	<link rel="stylesheet" type="css/text" href="bootstrap.min.css"/>
+	<style>
+		body{background:#c7e3ee ;}
+		*{margin:0;padding:0;}
+		li{list-style:none;}
+		.nav{background:#3399cc;margin-bottom:10px;}
+		.nav li{float:right;}
+		.nav li a{color:white;}
+		.nav li a:hover{background:#66ccff;font-weight:bold;}
+		.row{margin:0;}
+		.left,.right{width:25%;}
+		.center{width:50%;}
+		.push{float:right;overflow:hidden;margin-top:10px;}
+		.push-list{width:653px;word-wrap:break-word;}
+		.center h4{margin-top:44px;}
+		.user-list li,.push-list li{min-height:30px;padding-left:10px;line-height:30px;border-radius:3px;margin-bottom:4px;background:#3399cc;cursor:pointer;}
+		.search{width:60px;position:absolute;right:110px;top:22px;}
+		#search-con{width:150px;}
+		.push-list li{margin-bottom:4px;text-indent:16px;}
+		.push-list li a{float:right;margin-right:6px;font-size:12px;color:#ffffff;}
+		.prev,.next{float:right;height:26px;line-height:15px;}
+		.txt{width:40px;height:25px;text-align:center;line-height:24px;margin:0 4px;float:right;}
+		.userlist-con{padding:0 10px;border-radius:3px;background:#3399cc;}
+		em{font-size:16px;color:#6600ff;}
+		.prev-list,.next-list{float:right;}
+		.showuser a{font-weight:bold;}
+	</style>
+	<script src="jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<div class="row">
+	<ul class="nav nav-tabs">
+	  <li class="logout"><a href="###">退出</a></li>
+	  <li><a href="###">设置</a></li>
+	  <li><a href="###">个人中心</a></li>
+	  <li class="showuser"><a href="###">显示当前登录用户</a></li>
+	</ul>
+	<div class="col-md-4 left">
+		<h4>查看已注册用户</h4>
+		<ul class="user-list" id="user-list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<button class="btn btn-default next">下一页</button>
+		<input type="text" class="txt" placeholder="0"/>
+		<button class="btn btn-default prev">上一页</button>
+	</div>
+	<div class="col-md-4 center">
+		<em>说说你身边的新鲜事儿吧...</em>
+		<textarea class="form-control push-con" rows="3"></textarea>
+		<button type="button" class="btn btn-success push">发布</button>
+		<h4>最新微博列表</h4>
+		<ul class="push-list">
+			
+		</ul>
+		<button class="btn btn-default next-list">下一页</button>
+		<button class="btn btn-default prev-list">上一页</button>
+	</div>
+	<div class="col-md-4 right">
+		<div class="form-group">
+			<em>查看用户信息</em>
+			<form>
+				<input type="text" class="form-control " id="search-con" placeholder="搜索用户">
+				<input class="btn btn-default search" id="search" value="搜索">
+			</form>
+		</div>
+		<div id="userlist-con" class="userlist-con"></div>
+	</div>
+</div>
+<script>
+	$(function(){
+		var userID;
+		//显示登录用户
+		function username(){
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/user/?method=getinfo	&name=",
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						var usercon = "";
+						usercon = "当前用户:"+data.data.name;
+						userID = data.data._id;
+						$(".showuser a").html(usercon);
+					};
+				},
+				error : function(){
+					alert("error")
+				}
+			})
+		}
+		username();
+		//发布微博
+		$(".push").click(pushWB)
+		function pushWB(){
+			if($(".push-con").val() == ""){
+				alert("请输入内容");
+			};
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/msg/?method=add&text="+$(".push-con").val(),
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						if($(".push-con").val() == ""){
+							alert("请输入内容");
+						}else{
+							$("<li>"+$(".push-con").val()+"<a href='###'>删除</a></li>").prependTo(".push-list").hide().slideDown();	
+							$(".push-con").val("")
+							};
+							$(".push-list a").click(function(){
+								$(this).parent().animate({
+									height : "0px",
+							},500,function(){
+								$(this).remove()
+							})
+						})
+					}else{
+						if(data.code == 0){
+							alert("请登录")
+						};
+					};
+				},
+				error : function(){
+					alert("error")
+				}
+			})
+		};
+		//显示用户已发微博列表
+		var userPage = 0;
+		function userPush(userPage){
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/msg/?method=list&count=10&uid="+userID+"&page="+userPage,
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						var allUsercon ="";
+						for(var i = 0; i <data.data.length;i++){
+							allUsercon += "<li>"+data.data[i].text+"<a href='###'>删除</a></li>"
+						};
+						$(".push-list").html(allUsercon)
+					}else{
+						if(data.code == 0){
+							alert("用户未登录")
+						}
+					}
+				},
+				error : function(){
+					alert("error")
+				}
+			})
+		}
+		userPush(userPage)
+		$(".next-list").click(function(){
+			userPage++;
+			setTimeout(function(){
+				userPush(userPage);
+			},200);
+		});
+		$(".prev-list").click(function(){
+			userPage--;
+			if(userPage < 0){
+				alert("已经是第一页");
+				return;
+			};
+			setTimeout(function(){
+				userPush(userPage);
+			},200);
+		})
+		setTimeout(userPush,200);
+		//获取指定用户信息
+		var u = document.getElementById("userlist-con")
+		$("#search").click(function(){
+			if(!($("#search-con").val())){
+				alert("请输入用户名")
+			}else{
+				$.ajax({
+					url : "http://ajaxh518.taobaoxyz.com/api/user/?method=getinfo	&name="+$("#search-con").val(),
+					type : "get",
+					dataType : "jsonp",
+					jsonp : "jsoncb",
+					success : function(data){
+						if(data.done){
+							var usercon = "";
+							usercon = "<li><h5>用户名:</h5>"+data.data.name+"</li><li><h5>用户ID:</h5>"+data.data._id+"</li>"
+							u.innerHTML = usercon;
+							$("#search-con").val("")
+						}else{
+							if(data.code == 0){
+								alert("没有该用户")
+							}
+						}
+					},
+					error : function(){
+						alert("error")
+					}
+				})
+			}
+		})
+		//获取已经注册用户列表
+		var pageNum = 0;
+		var ul = document.getElementById("#user-list");
+		function Page(pageNum){
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/user/?method=listuser&count=10&page="+pageNum,
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						var lis="";
+						for(var i = 0; i <data.data.length;i++){
+							$(".user-list li").eq(i).html(data.data[i].name)
+						}
+					}
+				},
+				error : function(){
+					alert("error")
+				}
+			});
+		}
+		Page(pageNum)
+		$(".prev").click(function(){
+			pageNum--;
+			if(pageNum < 0){
+				alert("已经是第一页");
+				return;
+			}
+			setTimeout(function(){
+				Page(pageNum);
+			},200);
+		});
+		//var allLi = ul.getElementsByTagName("li")
+		$(".next").click(function(){
+			pageNum++;
+			//if(pageNum > allLi.length){
+			//	alert("已经是最后一页");
+			//	return;
+			//}
+			setTimeout(function(){
+				Page(pageNum);
+			},200);
+		});
+		//获取好友用户id
+		function userid (userName){
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/user/?method=getinfo&name="+userName,
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						userID = data.data._id;
+					}
+				},
+				error : function(){
+					alert("error")
+				}
+			})
+		}
+		//显示指定用户已发微博列表
+		function userlistCon(){
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/msg/?method=list&count=10&uid="+userID,
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						var allUsercon ="";
+						for(var i = 0; i <data.data.length;i++){
+							allUsercon += "<li>"+data.data[i].text+"<a href='###'>删除</a></li>"
+						};
+						if(allUsercon == ""){
+							$(".push-list").html("该用户没有发布信息")
+						}else{
+							$(".push-list").html(allUsercon)
+						}
+						
+					}else{
+						if(data.code == 0){
+							alert("用户未登录")
+						}
+					}
+				},
+				error : function(){
+					alert("error")
+				}
+			})
+		};
+		$(".user-list>li").click(function(){
+			userid ($(this).html());
+			setTimeout(userlistCon,200);
+		});
+		//退出登录
+		$(".logout").click(function(){
+			$.ajax({
+				url : "http://ajaxh518.taobaoxyz.com/api/user/?method=logout",
+				type : "get",
+				dataType : "jsonp",
+				jsonp : "jsoncb",
+				success : function(data){
+					if(data.done){
+						window.location.href ="index.html";
+					};
+				}
+			})
+		})
+	})
+</script>
+</body>
+</html>
